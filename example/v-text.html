@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-text&v-html 实例</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h3>v-text&v-html 实例</h3>
+    <hr>
+    <div id="app">
+        v-text: <span v-text="message"></span> <br/>
+        v-html: <span v-html="htmlMessage"></span>
+    </div>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello World !',
+                htmlMessage: '<b>Hello World!</b>'
+            }
+        })
+    </script>
+</body>
+</html>

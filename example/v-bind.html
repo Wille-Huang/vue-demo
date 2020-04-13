@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind 实例</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h3>v-bind 实例</h3>
+<hr>
+<div id="app">
+    <p><img v-bind:src="imgSrc" width="500px" /></p>
+    <p><a :href="webUrl" target="_blank">技术胖</a></p>
+    <div :class="className">1、绑定Class</div>
+    <div :class="{classA:isOk}">2、绑定Class中的判断</div>
+    <div :class="[classA,classB]">3、绑定Class数组</div>
+    <div :class="isOk?classA:classB">4、绑定Class根据isOk的值(三元运算符)</div>
+    <div :style="{color:color,fontSize:fontSize}">5、绑定Style</div>
+    <div :style="styleObj">6、绑定Style</div>
+    <br/>
+    <div>
+        <input type="checkbox" id="one" v-model="isOk" />
+        <label for="one">isOk</label>
+    </div>
+</div>
+<style type="text/css">
+    .classA{
+        color: red;
+    }
+    .classB{
+        font-size: 150%;
+    }
+</style>
+<script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        data: {
+            imgSrc: 'http://newimg.jspang.com/TaroLogo.jpg',
+            webUrl: 'https://www.jspang.com/',
+            className: 'classA',
+            isOk: false,
+            classA: 'classA',
+            classB: 'classB',
+            fontSize: '20px',
+            color: 'blue',
+            styleObj: {
+                color:'green',
+                fontSize: '24px'
+            }
+        }
+    })
+</script>
+</body>
+</html>
