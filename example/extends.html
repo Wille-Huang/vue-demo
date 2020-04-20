@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>extends option 拓展选项</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h3>extends option 拓展选项</h3>
+    <hr>
+    <div id="app">
+        <p>${ num }</p>
+        <p><button @click="add">add</button></p>
+    </div>
+
+    <script type="text/javascript">
+        var extendsObj = {
+            updated: function () {
+                console.log("我是拓展的,data:" + this.num);
+            },
+            methods: {
+                add: function () {
+                    console.log("我是拓展的add方法");
+                    this.num += 1;
+                }
+            }
+        };
+        var app = new Vue({
+            el: '#app',
+            data: {
+                num: 1
+            },
+            methods: {
+                add: function () {
+                    this.num += 1;
+                }
+            },
+            updated: function () {
+                console.log("我是原生的updated，data：" + this.num)
+            },
+            extends: extendsObj,
+            delimiters: ['${','}'] //自定义插值左右标记
+        })
+    </script>
+</body>
+</html>

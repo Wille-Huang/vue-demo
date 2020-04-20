@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>watch option 监控选项</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h3>watch option 监控选项</h3>
+<hr>
+<div id="app">
+    <p>温度: {{ temperature }}℃</p>
+    <p>穿衣建议： {{ advice }}</p>
+    <p><button @click="addTemperature">+5℃</button><button @click="subTemperature">-5℃</button></p>
+</div>
+
+<script type="text/javascript">
+    var adviceArray = ["短袖T恤","夹克长裙","棉衣羽绒服"];
+    var app = new Vue({
+        el: '#app',
+        data: {
+            temperature: 16,
+            advice: "夹克长裙"
+        },
+        watch: {
+            temperature:function (newValue) {
+                if (newValue > 21) {
+                    this.advice = adviceArray[0];
+                } else if (newValue <=21 && newValue > 13 ) {
+                    this.advice = adviceArray[1]
+                } else {
+                    this.advice = adviceArray[2]
+                }
+            }
+        },
+        methods: {
+            addTemperature: function () {
+                this.temperature += 5;
+            },
+            subTemperature: function () {
+                this.temperature -= 5;
+            }
+        }
+    })
+</script>
+</body>
+</html>
