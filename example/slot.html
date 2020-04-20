@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>slot content extend demo</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h3>slot content extend demo</h3>
+<hr>
+<div id="app">
+    <hywel>
+        <span slot="url">{{ hywel.url }}</span>
+        <span slot="nickName">{{ hywel.nickName }}</span>
+        <span slot="skill">{{ hywel.skill }}</span>
+    </hywel>
+</div>
+<template id="tep">
+    <div>
+        <p>url：<slot name="url"></slot></p>
+        <p>nickName：<slot name="nickName"></slot></p>
+        <p>skill：<slot name="skill"></slot></p>
+    </div>
+</template>
+<script type="text/javascript">
+    var hywel = {
+      template: "#tep"
+    };
+    var app = new Vue({
+        el: '#app',
+        data: {
+            hywel: {
+                url: "http://jspang.com",
+                nickName: "hywel",
+                skill: "php,vue"
+            }
+        },
+        components: {
+            "hywel": hywel
+        }
+    })
+</script>
+</body>
+</html>

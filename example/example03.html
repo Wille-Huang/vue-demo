@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>example methods Demo</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h3>example methods Demo</h3>
+<hr>
+<div id="app">
+    <p>{{ num }}</p>
+    <p><button @click="add">add</button></p>
+</div>
+<p><button onclick="sub()">sub</button></p>
+<p><button onclick="subOnce()">subOnce</button></p>
+<p><button onclick="offSub()">offSub</button></p>
+<script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        data: {
+            num: 1
+        },
+        methods: {
+            add: function () {
+                this.num++;
+            }
+        }
+    });
+    app.$on("sub", function () {
+        console.log("执行了sub方法");
+        this.num--;
+    });
+    app.$once("subOnce", function () {
+        console.log("只执行一次sub方法");
+        this.num--;
+    });
+    function sub() {
+       app.$emit("sub");
+    }
+    function subOnce() {
+        app.$emit("subOnce");
+    }
+    function offSub() {
+        console.log("关闭了sub事件");
+        app.$off("sub");
+    }
+</script>
+</body>
+</html>
