@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>component-3</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h3>component-3组件的父子关系</h3>
+<hr>
+<div id="app">
+    <ss></ss>
+</div>
+
+<script type="text/javascript">
+    var city = {
+        template: `<div> 我来自xx-city</div>`
+    };
+    var ss = {
+        template: `<div style="color: red"><p>我是hywel</p><city></city></div>`,
+        components: {
+            "city": city
+        }
+    };
+    var app = new Vue({
+        el: '#app',
+        data: {
+
+        },
+        components: {
+            "ss": ss
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>component-2</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h3>component-2</h3>
+<hr>
+<div id="app">
+    <ss v-bind:name="name" v-bind:from="fromWhere"></ss>
+</div>
+
+<script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        data: {
+            name: 'hywel',
+            fromWhere: 'China',
+        },
+        components: {
+            "ss":{
+                template: `<div>我是{{ name }},我来自{{ from }}</div>`,
+                props: ["name","from"]
+            }
+        }
+    })
+</script>
+</body>
+</html>
